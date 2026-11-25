@@ -24,10 +24,10 @@ while True:
             ]
             
             if all (fingers):
-                pyautogui.scroll(5)
+                pyautogui.scroll(100)
                 status="PALM OPEN - SCROLL UP"
             elif not any(fingers):
-                pyautogui.scroll(-5)
+                pyautogui.scroll(-100)
                 status="FIST - SCROLL DOWN"
             else:
                 status="HAND IDLE"
