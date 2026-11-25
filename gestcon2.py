@@ -29,7 +29,15 @@ while True:
             brightness=int(np.interp(distance,[20,100],[0,100]))
             brightness=max(0,min(100,brightness))
             sbc.set_brightness(brightness)
-            cv2.putText(img,f"Brightness: {brightness}%",(30,50),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
+            if brightness==0:
+                intensity="None"
+            elif brightness>0 and brightness<=33:
+                intensity="Low"
+            elif brightness>33 and brightness<=66:
+                intensity="Medium"
+            elif brightness>66 and brightness<=100:
+                intensity="High"
+            cv2.putText(img,f"Brightness: {intensity}",(30,50),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
             cv2.line(img,(x1,y1),(x2,y2),(255,0,0))
     cv2.imshow("Gesture Brightness Control",img)
     if cv2.waitKey(1) & 0xFF==ord('q'):
